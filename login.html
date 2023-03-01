@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="login-form" action="/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+      
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+      
+        <input type="submit" value="Log In">
+        <p>create an account <a href="signin.html">sign up</a></p>
+      </form>
+      
+      <script>
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        const form = document.getElementById('login-form');
+      
+        form.addEventListener('submit', function(event) {
+          const username = form.elements.username.value;
+          const password = form.elements.password.value;
+      
+          if (!passwordRegex.test(password)) {
+            event.preventDefault();
+            alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.');
+          }
+      
+        });
+      </script>      
+</body>
+</html>
